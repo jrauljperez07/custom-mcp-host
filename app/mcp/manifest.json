@@ -1,0 +1,23 @@
+{
+    "schema_version": "1.0",
+    "name": "Snowflake MCP Host",
+    "description": "MCP host for querying Snowflake data warehouse with secure SELECT statements",
+    "tools": [
+        {
+            "name": "run_custom_query",
+            "description": "Run a safe SQL SELECT query against the Snowflake database. Only SELECT queries are allowed.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "sql": {
+                        "type": "string",
+                        "description": "The SQL SELECT query to execute. Only queries starting with SELECT and limited to safe read-only operations are allowed."
+                    }
+                },
+                "required": [
+                    "sql"
+                ]
+            }
+        }
+    ]
+}
