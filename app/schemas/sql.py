@@ -12,8 +12,8 @@ class RunSQLRequest(BaseModel):
     def validate_select_only(cls, value):
         cleaned = value.strip().lower()
 
-        if not cleaned.startswith("select"):
-            raise ValueError("Only SELECT statements are allowed.")
+        if not (cleaned.startswith("select") or cleaned.startswith("with")):
+            raise ValueError("Only SELECT statements (including CTEs) are allowed.")
 
         forbidden = r"\b(insert|update|delete|drop|alter|create|grant|revoke|truncate|merge|call|copy|put|remove)\b"
         if re.search(forbidden, cleaned):

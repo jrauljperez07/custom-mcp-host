@@ -20,7 +20,6 @@ def get_connection(schema: str = None):
             schema=schema or settings.snowflake_schema,
             role=settings.snowflake_role
         )
-        logger.info("Successfully connected to Snowflake")
         return conn
     except Exception as e:
         logger.error("Failed to connect to Snowflake: %s", e, exc_info=True)
